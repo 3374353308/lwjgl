@@ -25,6 +25,9 @@ Compilation
 LWJGL requires a JDK and Ant installed to compile, as well as your platforms native compiler to compile the JNI.
 LWJGL需要安装JDK和Ant来编译，以及你的平台本机编译器来编译JNI。
 
+this is only used on aarch64
+这仅适用于aarch64架构
+
 * ant generate-all
 * ant compile
 * ant compile_native
