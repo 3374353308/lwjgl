@@ -32,7 +32,7 @@
 				<os name="SunOS" />
 			</and>
 		</condition>
-    	<condition property="cflags64" value="-O2 -m64 -Wall -c -fPIC -std=c99 -Wunused" else="-O2 -Wall -c -fPIC -std=c99 -Wunused">
+    	<condition property="cflags64" value="-O2 -Wall -c -fPIC -std=c99 -Wunused" else="-O2 -Wall -c -fPIC -std=c99 -Wunused">
     		<os name="SunOS" />
     	</condition>
 
