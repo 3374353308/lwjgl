@@ -4,7 +4,7 @@
 	<property name="native" location="../../src/native"/>
 	<property name="libname32" value="liblwjgl.so"/>
 	<property name="libname64" value="liblwjgl64.so"/>
-	<property name="libs32" value="-L/usr/X11R6/lib -L/usr/X11/lib -lm -lX11 -lXext -lXcursor -lXrandr -lXxf86vm -lpthread -L${java.home}/lib/arm -ljawt" />
+	<property name="libs32" value="-L/usr/X11R6/lib -L/usr/X11/lib -lm -lX11 -lXext -lXcursor -lXrandr -lXxf86vm -lpthread -L${java.home}/lib/aarch64 -ljawt" />
 	<property name="libs64" value="-L/usr/X11R6/lib64 -L/usr/X11/lib64 -lm -lX11 -lXext -lXcursor -lXrandr -lXxf86vm -lpthread -L${java.home}/lib/aarch64 -ljawt" />
 	<property name="cflags32" value="-O2 -Wall -c -fPIC -std=c99 -Wunused"/>
 
@@ -62,7 +62,7 @@
 
     <target name="compile32" unless="build.64bit.only">
     	<mkdir dir="x32"/>
-    	<apply dir="x32" executable="gcc" skipemptyfilesets="true" failonerror="true" parallel="true">
+    	<apply dir="x32" executable="gcc" skipemptyfilesets="true" failonerror="false" parallel="true">
 			<arg line="${cflags32} ${cflags_pthread}"/>
 			<arg value="-I${java.home}/include"/>
 			<arg value="-I${java.home}/include/linux"/>
@@ -82,12 +82,12 @@
 		    <fileset dir="${native}/linux" includes="*.c"/>
 		    <fileset dir="${native}/linux/opengl" includes="*.c"/>
 	    </apply>
-		<apply dir="." parallel="true" executable="gcc" failonerror="true">
+		<apply dir="." parallel="true" executable="gcc" failonerror="false">
 			<srcfile/>
 			<arg line="${linker_flags32}"/>
 			<fileset dir="x32" includes="*.o"/>
 		</apply>
-		<apply dir="." parallel="true" executable="strip" failonerror="true">
+		<apply dir="." parallel="true" executable="strip" failonerror="false">
 			<fileset file="${libname32}"/>
 		</apply>
     </target>
